@@ -2,11 +2,12 @@
   "name": "youtube",
   "version": "1.0.0",
   "description": "Here we are developing the YouTube Clone where we are utilizing all the concept of backend from beggining to advance.",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Vinay Rai",
   "license": "ISC"
 }
