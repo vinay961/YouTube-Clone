@@ -1,4 +1,4 @@
-import { express } from "express"
+import express from "express"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 
@@ -12,5 +12,12 @@ app.use(express.urlencoded({extended: true,limit: "16kb"})) // This middleware i
 app.use(express.static("public")) // This middleware is used to serve static files such as images, CSS files, JavaScript files, etc., from the specified directory (public in this case)
 app.use(cookieParser()) // This allows you to access the cookies sent by the client in subsequent request handlers
 
+
+// router
+import userRouter from './routes/user.route.js'
+
+
+// router declaration
+app.use('/api/v1/users',userRouter)
 
 export {app}
