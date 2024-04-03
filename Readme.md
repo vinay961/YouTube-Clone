@@ -18,4 +18,4 @@ $project: Shapes the output by specifying which fields to include or exclude.
 $sort: Sorts documents based on specified criteria.
 $limit: Limits the number of output documents.
 $unwind: Deconstructs an array field into multiple documents.
-
+$lookup: it performs left outer join between two collection within same database.
