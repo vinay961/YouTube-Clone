@@ -208,7 +208,7 @@ const changeCurrentPassword = asyncHandler(async(req,res) => {
         }
 
         user.password = newPassword
-        await user.save({validateBeforeSave:false})
+        await user.save({validateBeforeSave: false})
 
         return res
         .status(200)
@@ -269,8 +269,9 @@ const updateUserAvatar = asyncHandler(async(req,res) => {
             new:true
         }
     )
-    return res.status(200).json(200,user,"Avatar updated successfully.")
+    return res.status(200).json(new ApiResponse(200,user,"Avatar updated successfully."))
 })
+
 const updateUserCoverImage = asyncHandler(async(req,res) => {
     const coverImageLocalPath = req.file?.path
 
@@ -355,7 +356,16 @@ const getUserChannelProfile = asyncHandler(async (req,res) => {
         }
 
     ])
-})
+    if (!channel || channel.length === 0) {
+        throw new ApiError(404, "channel does not exists")
+    }
+
+    return res
+    .status(200)
+    .json(
+        new ApiResponse(200, channel[0], "User channel fetched successfully")
+    )
+})  
 
 const getWatchHistory = asyncHandler(async(req,res) => {
     const user = User.aggregate([
